@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – ImgLab Tools</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <a href="/" class="site-logo">
+        <img src="/images/logo.png" alt="ImgLab Tools" class="logo-img">
+      </a>
+      <nav>
+        <a href="/blog">Blog</a>
+        <a href="/">← Back to Calculator</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Stats Overview -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <h3>Total Calculations</h3>
+        <p class="stat-value" id="total-calc">0</p>
+      </div>
+      <div class="stat-card">
+        <h3>Saved Items</h3>
+        <p class="stat-value" id="total-saved">0</p>
+      </div>
+      <div class="stat-card">
+        <h3>Most Used</h3>
+        <p class="stat-value" id="most-used">-</p>
+      </div>
+    </section>
+
+    <!-- Tabs Navigation -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="recent">📌 Recent</button>
+      <button class="tab-btn" data-tab="saved">⭐ Saved</button>
+      <button class="tab-btn" data-tab="analytics">📈 Analytics</button>
+      <button class="tab-btn" data-tab="export">⬇️ Export</button>
+    </div>
+
+    <!-- Recent Calculations -->
+    <section class="tab-content active" id="recent">
+      <h2>Recent Calculations</h2>
+      <div id="recent-list" class="calculations-list">
+        <p class="loading">Loading...</p>
+      </div>
+    </section>
+
+    <!-- Saved Calculations -->
+    <section class="tab-content" id="saved">
+      <h2>Saved Calculations</h2>
+      <div id="saved-list" class="calculations-list">
+        <p class="loading">Loading...</p>
+      </div>
+      <p id="saved-empty" style="display:none; text-align:center; color:#888;">No saved calculations</p>
+    </section>
+
+    <!-- Analytics -->
+    <section class="tab-content" id="analytics">
+      <h2>Usage Analytics</h2>
+      <div id="analytics-list" class="analytics-grid">
+        <p class="loading">Loading...</p>
+      </div>
+    </section>
+
+    <!-- Export Options -->
+    <section class="tab-content" id="export">
+      <h2>Export Data</h2>
+      <div class="export-options">
+        <button class="btn-export" id="export-csv">📥 Download CSV</button>
+        <button class="btn-export" id="export-json">📋 Download JSON</button>
+        <button class="btn-export btn-danger" id="clear-history">🗑️ Clear History</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 ImgLab Tools – <a href="/blog" style="color:#eee">Blog</a> | <a href="/privacy-policy" style="color:#eee">Privacy</a> | <a href="/disclaimer" style="color:#eee">Disclaimer</a></p>
+  </footer>
+
+  <script>
+    // Tab Switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabName = btn.dataset.tab;
+        
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        
+        document.getElementById(tabName).classList.add('active');
+        btn.classList.add('active');
+        
+        if (tabName === 'recent') loadRecent();
+        else if (tabName === 'saved') loadSaved();
+        else if (tabName === 'analytics') loadAnalytics();
+      });
+    });
+
+    // Load Dashboard Data
+    async function loadDashboard() {
+      try {
+        const history = await fetch('/api/history?limit=100').then(r => r.json());
+        const saved = await fetch('/api/saved').then(r => r.json());
+        const analytics = await fetch('/api/analytics').then(r => r.json());
+
+        document.getElementById('total-calc').textContent = history.count;
+        document.getElementById('total-saved').textContent = saved.count;
+        
+        if (analytics.data.length > 0) {
+          document.getElementById('most-used').textContent = analytics.data[0].calculation_type.replace(/_/g, ' ');
+        }
+      } catch (err) {
+        console.error('Error loading dashboard:', err);
+      }
+    }
+
+    // Load Recent Calculations
+    async function loadRecent() {
+      const list = document.getElementById('recent-list');
+      list.innerHTML = '<p class="loading">Loading...</p>';
+      
+      try {
+        const res = await fetch('/api/history?limit=50');
+        const { count, data } = await res.json();
+        
+        if (count === 0) {
+          list.innerHTML = '<p style="text-align:center; color:#888;">No calculations yet</p>';
+          return;
+        }
+
+        list.innerHTML = data.map(calc => `
+          <div class="calculation-card">
+            <div class="calc-header">
+              <span class="calc-type">${calc.type.replace(/_/g, ' ').toUpperCase()}</span>
+              <span class="calc-date">${new Date(calc.created_at).toLocaleString()}</span>
+            </div>
+            <div class="calc-body">
+              <p><strong>Input:</strong> ${calc.input_value}</p>
+              <p><strong>Output:</strong> ${calc.output_value}</p>
+              ${calc.university ? `<p><strong>University:</strong> ${calc.university}</p>` : ''}
+            </div>
+            <button class="btn-small" onclick="saveSingle('${calc.id}')">💾 Save</button>
+          </div>
+        `).join('');
+      } catch (err) {
+        list.innerHTML = `<p style="color: red;">Error: ${err.message}</p>`;
+      }
+    }
+
+    // Load Saved Calculations
+    async function loadSaved() {
+      const list = document.getElementById('saved-list');
+      const empty = document.getElementById('saved-empty');
+      list.innerHTML = '<p class="loading">Loading...</p>';
+      
+      try {
+        const res = await fetch('/api/saved');
+        const { count, data } = await res.json();
+        
+        if (count === 0) {
+          list.style.display = 'none';
+          empty.style.display = 'block';
+          return;
+        }
+
+        list.style.display = 'grid';
+        empty.style.display = 'none';
+        
+        list.innerHTML = data.map(item => `
+          <div class="calculation-card saved-card">
+            <div class="calc-header">
+              <span class="calc-name">${item.name}</span>
+              <span class="calc-date">${new Date(item.created_at).toLocaleString()}</span>
+            </div>
+            <div class="calc-body">
+              <p><strong>Type:</strong> ${item.type.replace(/_/g, ' ')}</p>
+              <p><strong>Input:</strong> ${item.input_value}</p>
+              <p><strong>Output:</strong> ${item.output_value}</p>
+            </div>
+            <button class="btn-small btn-danger" onclick="deleteSaved('${item.id}')">🗑️ Delete</button>
+          </div>
+        `).join('');
+      } catch (err) {
+        list.innerHTML = `<p style="color: red;">Error: ${err.message}</p>`;
+      }
+    }
+
+    // Load Analytics
+    async function loadAnalytics() {
+      const list = document.getElementById('analytics-list');
+      list.innerHTML = '<p class="loading">Loading...</p>';
+      
+      try {
+        const res = await fetch('/api/analytics');
+        const { data } = await res.json();
+        
+        if (data.length === 0) {
+          list.innerHTML = '<p style="text-align:center; color:#888;">No analytics data yet</p>';
+          return;
+        }
+
+        list.innerHTML = data.map(item => `
+          <div class="analytics-card">
+            <h4>${item.calculation_type.replace(/_/g, ' ').toUpperCase()}</h4>
+            <p class="analytics-count">${item.count} uses</p>
+            <p class="analytics-date">Last: ${new Date(item.last_used).toLocaleString()}</p>
+          </div>
+        `).join('');
+      } catch (err) {
+        list.innerHTML = `<p style="color: red;">Error: ${err.message}</p>`;
+      }
+    }
+
+    // Save Single Calculation
+    async function saveSingle(calcId) {
+      const name = prompt('Save as:', 'My Calculation');
+      if (!name) return;
+
+      try {
+        await fetch('/api/save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ calculation_id: calcId, name })
+        });
+        alert('✅ Saved successfully!');
+      } catch (err) {
+        alert('❌ Error saving: ' + err.message);
+      }
+    }
+
+    // Delete Saved Calculation
+    async function deleteSaved(savedId) {
+      if (!confirm('Delete this saved item?')) return;
+
+      try {
+        await fetch(`/api/saved/${savedId}`, { method: 'DELETE' });
+        alert('✅ Deleted!');
+        loadSaved();
+      } catch (err) {
+        alert('❌ Error deleting: ' + err.message);
+      }
+    }
+
+    // Export Functions
+    document.getElementById('export-csv').addEventListener('click', () => {
+      window.location.href = '/api/export/csv';
+    });
+
+    document.getElementById('export-json').addEventListener('click', () => {
+      window.location.href = '/api/export/json';
+    });
+
+    document.getElementById('clear-history').addEventListener('click', () => {
+      if (!confirm('Clear all history? This cannot be undone.')) return;
+      
+      fetch('/api/cleanup', { method: 'DELETE' })
+        .then(() => {
+          alert('✅ History cleared!');
+          loadDashboard();
+          loadRecent();
+        })
+        .catch(err => alert('❌ Error: ' + err.message));
+    });
+
+    // Initial Load
+    loadDashboard();
+    loadRecent();
+  </script>
+</body>
+</html>

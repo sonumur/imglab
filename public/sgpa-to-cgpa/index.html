@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SGPA to CGPA Calculator – Convert Semester GPA to Cumulative</title>
+<meta name="description" content="Free SGPA to CGPA calculator. Convert semester-wise SGPA to overall CGPA for VTU, Anna University, Mumbai University, AKTU and more with credit hours."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://imglab.co.in/sgpa-to-cgpa"/>
+<meta property="og:title" content="SGPA to CGPA Calculator – Semester-wise Grade Sum"/>
+<meta property="og:description" content="Calculate your cumulative CGPA from semester SGPA and credits. Accurate weighted average calculator for all Indian universities."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://imglab.co.in/sgpa-to-cgpa"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://imglab.co.in/" },
+        { "@type": "ListItem", "position": 2, "name": "SGPA to CGPA Calculator", "item": "https://imglab.co.in/sgpa-to-cgpa" }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "SGPA to CGPA Calculator",
+      "url": "https://imglab.co.in/sgpa-to-cgpa",
+      "applicationCategory": "EducationApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/style.css"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png" />
+  <link rel="apple-touch-icon" href="/images/favicon.png" />
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="topbar"><div class="topbar-inner"><span>📍 India's #1 Free Grade Calculator Portal</span><span><a href="/contact">Contact</a> &nbsp;|&nbsp; <a href="/about">About</a> &nbsp;|&nbsp; <a href="/privacy-policy">Privacy</a></span></div></div>
+<div class="site-header"><div class="header-inner"><a href="/" class="site-logo"><img src="/images/logo.png" alt="ImgLab Tools" class="logo-img"></a><p class="header-tagline">Calculate your cumulative academic performance with ease.</p></div></div>
+<nav class="main-nav" role="navigation" aria-label="Main Navigation"><div class="nav-inner">
+  <a href="/">Home</a><a href="/cgpa-to-percentage">CGPA → %</a><a href="/percentage-to-cgpa">% → CGPA</a><a href="/sgpa-to-cgpa" class="active">SGPA → CGPA</a><a href="/grade-calculator">Grade Calculator</a><a href="/cgpa-percentage-table">Conversion Table</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a>
+</div></nav>
+
+<div class="ad-slot ad-banner" style="max-width:1100px;margin:12px auto;display:flex;" aria-label="Advertisement"></div>
+
+<div class="site-body">
+<main class="content-area" role="main" id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span> SGPA to CGPA Calculator</nav>
+  <h1 class="page-title">SGPA to CGPA Calculator</h1>
+  <p class="page-subtitle">Combine your semester-wise SGPA into a single cumulative CGPA. Enter SGPA and total credits for each semester.</p>
+
+  <div class="box">
+    <div class="box-head">Enter Semester Details (SGPA & Credits)</div>
+    <div class="box-body">
+      <div class="subject-row-head"><span>Semester</span><span>SGPA</span><span>Total Credits</span><span></span></div>
+      <div id="sgpaList"></div>
+      <div class="btn-row">
+        <button class="btn btn-success btn-sm" id="btnAddSGPASem">+ Add Semester</button>
+        <button class="btn btn-primary" id="btnCalcSGPA">⚡ Calculate CGPA</button>
+        <button class="btn btn-warning btn-sm" id="btnResetSGPA">↺ Reset</button>
+      </div>
+      
+      <div class="result-box" id="sgpaResult" role="alert" aria-live="polite">
+        <div class="result-grid">
+          <div class="result-item"><div class="result-label">Cumulative CGPA</div><div class="result-big" id="resSCGPA">—</div></div>
+          <div class="result-item"><div class="result-label">Approx. Percentage</div><div class="result-big" id="resSPCT">—</div></div>
+          <div class="result-item"><div class="result-label">Total Credits Earned</div><div class="result-big" id="resTotalCred" style="font-size:1.3rem;padding-top:8px">—</div></div>
+        </div>
+        <div class="progress-wrap" style="margin-top:20px">
+          <div class="progress-label"><span>0</span><span>CGPA Progress Bar</span><span>10.0</span></div>
+          <div class="progress-track"><div class="progress-fill" id="sgpaBar" style="width:0%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot ad-banner" style="display:flex;margin-bottom:22px;" aria-label="Advertisement"></div>
+
+  <div class="box">
+    <div class="box-head">Comprehensive Guide: How to Calculate CGPA from SGPA</div>
+    <div class="box-body prose">
+      <h2>SGPA vs. CGPA: Understanding the Difference</h2>
+      <p>In the Indian grading system, students often encounter two main metrics: SGPA and CGPA. <strong>SGPA (Semester Grade Point Average)</strong> represents your performance in a single semester. <strong>CGPA (Cumulative Grade Point Average)</strong> is the overall assessment of your performance throughout the entire course (all semesters combined).</p>
+
+      <h3>Why a Simple Average is Wrong: The Weighted Average Formula</h3>
+      <p>A common mistake students make is adding all SGPAs and dividing by the number of semesters. This is technically incorrect because different semesters often have different total credit hours. CGPA is a <strong>weighted average</strong>, meaning semesters with more complex subjects or more credits have a higher impact on your final result.</p>
+
+      <div class="info-box blue">
+        <strong>The Official CGPA Formula:</strong><br/>
+        CGPA = Σ (Semester SGPA × Semester Credits) ÷ Total Cumulative Credits
+      </div>
+
+      <h2>Step-by-Step Breakdown of Calculation</h2>
+      <p>To calculate your CGPA accurately, follow this university-standard example:</p>
+      <table class="data-table">
+        <thead><tr><th>Semester</th><th>SGPA</th><th>Total Credits</th><th>Weightage (SGPA × Credits)</th></tr></thead>
+        <tbody>
+          <tr><td>Semester 1</td><td>8.50</td><td>20</td><td>170.0</td></tr>
+          <tr><td>Semester 2</td><td>7.80</td><td>22</td><td>171.6</td></tr>
+          <tr><td>Semester 3</td><td>8.10</td><td>21</td><td>170.1</td></tr>
+          <tr style="background:#f9f9f9"><td><strong>Cumulative Total</strong></td><td></td><td><strong>63</strong></td><td><strong>511.7</strong></td></tr>
+        </tbody>
+      </table>
+      <p><strong>Final CGPA = 511.7 ÷ 63 = 8.12</strong></p>
+
+      <h2>University-Specific Credit Patterns (VTU, Anna University, Mumbai)</h2>
+      <p>While the mathematical formula is universal, credit assignment varies by university:</p>
+      <ul>
+        <li><strong>VTU (CBCS):</strong> Credits are usually higher in the 3rd to 6th semesters (core engineering years). Focus on these years to boost your final CGPA.</li>
+        <li><strong>Anna University:</strong> Final year projects and internships carry significant credits, which can drastically improve your overall percentage if you perform well.</li>
+        <li><strong>Mumbai University:</strong> The conversion from CGPA to percentage follows the (CGPA - 0.5) × 10 rule for engineering, but the SGPA to CGPA calculation remains credit-weighted.</li>
+      </ul>
+
+      <h3>How to Improve Your Final CGPA?</h3>
+      <p>Since CGPA is cumulative, early semesters form the foundation. However, if your early grades are low, you can recover by scoring higher SGPAs in semesters with higher total credits. Use our tool to project your future CGPA based on expected semester results.</p>
+
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <div class="faq-item">
+        <div class="faq-q" tabindex="0" role="button"><span>Can I calculate CGPA without credits?</span><span class="tog">+</span></div>
+        <div class="faq-a">Only if every semester has the exact same number of credits. Since almost all Indian universities (VTU, JNTU, Anna University) have varying semester credits, you <strong>must</strong> use the weighted average method for an accurate transcript.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" tabindex="0" role="button"><span>What is a "Good" CGPA for engineering students?</span><span class="tog">+</span></div>
+        <div class="faq-a">A CGPA of <strong>7.5 and above</strong> is generally considered the "Safe Zone" for campus placements in India. For higher studies in the US or Europe, a CGPA of <strong>8.5+</strong> is highly competitive.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" tabindex="0" role="button"><span>Does SGPA include "Backlog" subjects?</span><span class="tog">+</span></div>
+        <div class="faq-a">Usually, SGPA is calculated based on the subjects you pass. If you fail a subject, that credit is not counted in the numerator, but remains in the denominator until you clear it, effectively lowering your SGPA.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<aside class="sidebar" role="complementary">
+  <div class="ad-slot ad-rect" aria-label="Advertisement"></div>
+  <div class="widget"><div class="widget-title">🔧 Calculator Tools</div><div class="widget-body"><ul class="widget-links">
+    <li><a href="/">Home</a></li><li><a href="/cgpa-to-percentage">CGPA to Percentage</a></li><li><a href="/percentage-to-cgpa">Percentage to CGPA</a></li><li><a href="/sgpa-to-cgpa" class="active">SGPA to CGPA</a></li><li><a href="/grade-calculator">Grade Calculator</a></li><li><a href="/cgpa-percentage-table">Conversion Table</a></li>
+  </ul></div></div>
+  <div class="widget"><div class="widget-title">📊 Popular CGPA Values</div><div class="widget-body">
+    <table style="width:100%;font-size:.82rem;border-collapse:collapse"><thead><tr style="background:#f7f7f7"><th style="padding:5px 8px;text-align:left;border-bottom:1px solid #ddd">CGPA</th><th style="padding:5px 8px;border-bottom:1px solid #ddd">%</th><th style="padding:5px 8px;border-bottom:1px solid #ddd">Grade</th></tr></thead><tbody id="sidebarTable"></tbody></table>
+  </div></div>
+</aside>
+</div>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-top">
+    <div class="footer-col"><h4>ImgLab Tools</h4><p>Free CGPA and grade conversion tools for all Indian university students.</p></div>
+    <div class="footer-col"><h4>Calculator Tools</h4><ul><li><a href="/cgpa-to-percentage">CGPA to Percentage</a></li><li><a href="/percentage-to-cgpa">Percentage to CGPA</a></li><li><a href="/sgpa-to-cgpa">SGPA to CGPA</a></li><li><a href="/grade-calculator">Grade Calculator</a></li><li><a href="/cgpa-percentage-table">Conversion Tables</a></li></ul></div>
+    <div class="footer-col"><h4>Important Pages</h4><ul><li><a href="/">Home</a></li><li><a href="/blog">Blog</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/disclaimer">Disclaimer</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 ImgLab Tools | <a href="/blog">Blog</a> | <a href="/about">About Us</a> | <a href="/contact">Contact Us</a> | <a href="/privacy-policy">Privacy Policy</a> | <a href="/disclaimer">Disclaimer</a></p></div>
+</footer>
+
+<script src="/js/calc.js"></script>
+</body>
+</html>
+

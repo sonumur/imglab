@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Percentage to CGPA Calculator – Convert % to 10-Point Scale</title>
+<meta name="description" content="Free Percentage to CGPA calculator for Indian students. Convert percentage to CGPA for VTU, Anna University, Mumbai University, AKTU and more instantly."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://imglab.co.in/percentage-to-cgpa"/>
+<meta property="og:title" content="Percentage to CGPA Calculator – Instant Grade Converter"/>
+<meta property="og:description" content="Convert your percentage to CGPA instantly. Supports all major Indian university formulas. 100% free and accurate."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://imglab.co.in/percentage-to-cgpa"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://imglab.co.in/" },
+        { "@type": "ListItem", "position": 2, "name": "Percentage to CGPA Calculator", "item": "https://imglab.co.in/percentage-to-cgpa" }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Percentage to CGPA Calculator",
+      "url": "https://imglab.co.in/percentage-to-cgpa",
+      "applicationCategory": "EducationApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/style.css"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png" />
+  <link rel="apple-touch-icon" href="/images/favicon.png" />
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="topbar"><div class="topbar-inner"><span>📍 India's #1 Free Grade Calculator Portal</span><span><a href="/contact">Contact</a> &nbsp;|&nbsp; <a href="/about">About</a> &nbsp;|&nbsp; <a href="/privacy-policy">Privacy</a></span></div></div>
+<div class="site-header"><div class="header-inner"><a href="/" class="site-logo"><img src="/images/logo.png" alt="ImgLab Tools" class="logo-img"></a><p class="header-tagline">Convert your percentage marks to CGPA instantly.</p></div></div>
+<nav class="main-nav" role="navigation" aria-label="Main Navigation"><div class="nav-inner">
+  <a href="/">Home</a><a href="/cgpa-to-percentage">CGPA → %</a><a href="/percentage-to-cgpa" class="active">% → CGPA</a><a href="/sgpa-to-cgpa">SGPA → CGPA</a><a href="/grade-calculator">Grade Calculator</a><a href="/cgpa-percentage-table">Conversion Table</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a>
+</div></nav>
+
+<div class="ad-slot ad-banner" style="max-width:1100px;margin:12px auto;display:flex;" aria-label="Advertisement"></div>
+
+<div class="site-body">
+<main class="content-area" role="main" id="main-content">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span> Percentage to CGPA Calculator</nav>
+  <h1 class="page-title">Percentage to CGPA Calculator</h1>
+  <p class="page-subtitle">Convert your total percentage into a CGPA on a 10-point scale. Choose your university for accurate results.</p>
+
+  <div class="box">
+    <div class="box-head">Percentage to CGPA Converter</div>
+    <div class="box-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="p2cPct">Enter Percentage (%)</label>
+          <input type="number" id="p2cPct" placeholder="e.g. 78.5" step="0.01" min="0" max="100"/>
+        </div>
+        <div class="form-group">
+          <label for="p2cUniv">Select University Formula</label>
+          <select id="p2cUniv">
+            <option value="normal">General (÷9.5)</option>
+            <option value="vtu">VTU (÷9.5)</option>
+            <option value="anna">Anna University (÷9.5)</option>
+            <option value="mumbai">Mumbai University</option>
+            <option value="aktu">AKTU (÷10)</option>
+            <option value="gtu">GTU (÷9.5)</option>
+            <option value="sppu">SPPU Pune (÷9.5)</option>
+          </select>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="btnCalcP2C">Calculate CGPA</button>
+        <button class="btn btn-warning" id="btnResetP2C">↺ Reset</button>
+      </div>
+      
+      <div class="result-box" id="p2cResult" role="alert" aria-live="polite">
+        <div class="result-grid">
+          <div class="result-item"><div class="result-label">Calculated CGPA</div><div class="result-big" id="resPCGPA">—</div></div>
+          <div class="result-item"><div class="result-label">Grade</div><div class="result-big" id="resPGrade">—</div></div>
+          <div class="result-item"><div class="result-label">Comparison (%)</div><div class="result-big" id="resP2CPct" style="font-size:1.1rem;padding-top:12px">—</div></div>
+        </div>
+        <div class="info-box yellow" style="margin-top:12px;font-size:.83rem" id="p2cFormula"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot ad-banner" style="display:flex;margin-bottom:22px;" aria-label="Advertisement"></div>
+
+  <div class="box">
+    <div class="box-head">Detailed Guide: Converting Percentage (%) to CGPA</div>
+    <div class="box-body prose">
+      <h2>Why Convert Percentage to CGPA?</h2>
+      <p>While most marksheets in India show total marks and percentages, many modern academic platforms and recruitment systems have shifted to the <strong>Cumulative Grade Point Average (CGPA)</strong> system. For instance, if you are applying for a Master's degree in the USA, UK, or Australia, or filling out a form for a multinational corporation (MNC), you might be asked to convert your aggregate marks into a 10-point scale CGPA.</p>
+
+      <h3>The Reverse Calculation: How it Works</h3>
+      <p>Converting percentage back to CGPA is the mathematical inverse of the standard conversion. Since the official multiplier for universities like <strong>VTU, Anna University, and GTU</strong> is 9.5, the reverse operation involves dividing your percentage marks by 9.5.</p>
+
+      <div class="info-box green">
+        <strong>The General Reverse Formula:</strong> CGPA = Total Percentage ÷ 9.5
+      </div>
+
+      <h2>University-Wise Reverse Conversion Rules</h2>
+      <p>Just like the forward conversion, different universities have different rules for evaluating CGPA from marks:</p>
+      <table class="data-table">
+        <thead><tr><th>University / Board</th><th>Reverse Formula</th><th>Example (76.0%)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>VTU / Anna University / GTU</strong></td><td>Percentage ÷ 9.5</td><td>8.00 CGPA</td></tr>
+          <tr><td><strong>Mumbai University (Engineering)</strong></td><td>(Percentage ÷ 10) + 0.5</td><td>8.10 CGPA</td></tr>
+          <tr><td><strong>CBSE (10th & 12th)</strong></td><td>Percentage ÷ 9.5</td><td>8.00 CGPA</td></tr>
+          <tr><td><strong>AKTU / UPTU</strong></td><td>Percentage ÷ 10</td><td>7.60 CGPA</td></tr>
+          <tr><td><strong>SPPU (Pune University)</strong></td><td>Percentage ÷ 9.5</td><td>8.00 CGPA</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Conversion for International Applications (WES / 4-Point Scale)</h2>
+      <p>If you are applying for higher education abroad, particularly in the United States, your 10-point scale CGPA might need to be converted to a <strong>4.0-point grading system</strong>. While agencies like <strong>WES (World Education Services)</strong> perform official course-by-course evaluations, a general rule of thumb is:</p>
+      <ul>
+        <li><strong>CGPA 8.5 - 10.0:</strong> ~ 3.7 - 4.0 (A)</li>
+        <li><strong>CGPA 7.5 - 8.4:</strong> ~ 3.3 - 3.6 (B+)</li>
+        <li><strong>CGPA 6.5 - 7.4:</strong> ~ 2.7 - 3.2 (B)</li>
+      </ul>
+
+      <h3>Step-by-Step Manual Calculation</h3>
+      <ol>
+        <li>Gather your overall aggregate percentage across all semesters.</li>
+        <li>Identify your university's official multiplier (9.5 is standard for most).</li>
+        <li>Divide your percentage by the multiplier.</li>
+        <li>Round to two decimal places for a professional transcript look.</li>
+      </ol>
+
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <div class="faq-item">
+        <div class="faq-q" tabindex="0" role="button"><span>What is 75% in CGPA?</span><span class="tog">+</span></div>
+        <div class="faq-a">For VTU or Anna University: 75 ÷ 9.5 = <strong>7.89 CGPA</strong>. For Mumbai University: (75 ÷ 10) + 0.5 = <strong>8.00 CGPA</strong>.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" tabindex="0" role="button"><span>Is 80% equivalent to 8.0 CGPA?</span><span class="tog">+</span></div>
+        <div class="faq-a">Not exactly. On a 10-point scale with a 9.5 multiplier, 80% is <strong>8.42 CGPA</strong>. In systems with a simple 10-point multiplier (like AKTU), 80% is exactly 8.0 CGPA.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" tabindex="0" role="button"><span>Why do recruitment forms ask for percentage?</span><span class="tog">+</span></div>
+        <div class="faq-a">Percentage provides a more granular view of marks, which is often used as a tie-breaker when multiple candidates have the same CGPA.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<aside class="sidebar" role="complementary">
+  <div class="ad-slot ad-rect" aria-label="Advertisement"></div>
+  <div class="widget"><div class="widget-title">🔧 Calculator Tools</div><div class="widget-body"><ul class="widget-links">
+    <li><a href="/">Home</a></li><li><a href="/cgpa-to-percentage">CGPA to Percentage</a></li><li><a href="/percentage-to-cgpa" class="active">Percentage to CGPA</a></li><li><a href="/sgpa-to-cgpa">SGPA to CGPA</a></li><li><a href="/grade-calculator">Grade Calculator</a></li><li><a href="/cgpa-percentage-table">Conversion Table</a></li>
+  </ul></div></div>
+  <div class="widget"><div class="widget-title">📊 Popular CGPA Values</div><div class="widget-body">
+    <table style="width:100%;font-size:.82rem;border-collapse:collapse"><thead><tr style="background:#f7f7f7"><th style="padding:5px 8px;text-align:left;border-bottom:1px solid #ddd">CGPA</th><th style="padding:5px 8px;border-bottom:1px solid #ddd">%</th><th style="padding:5px 8px;border-bottom:1px solid #ddd">Grade</th></tr></thead><tbody id="sidebarTable"></tbody></table>
+  </div></div>
+</aside>
+</div>
+
+  <div class="footer-top">
+    <div class="footer-col"><h4>ImgLab Tools</h4><p>Free CGPA and grade conversion tools for all Indian university students.</p></div>
+    <div class="footer-col"><h4>Calculator Tools</h4><ul><li><a href="/cgpa-to-percentage">CGPA to Percentage</a></li><li><a href="/percentage-to-cgpa">Percentage to CGPA</a></li><li><a href="/sgpa-to-cgpa">SGPA to CGPA</a></li><li><a href="/grade-calculator">Grade Calculator</a></li><li><a href="/cgpa-percentage-table">Conversion Tables</a></li></ul></div>
+    <div class="footer-col"><h4>Important Pages</h4><ul><li><a href="/">Home</a></li><li><a href="/blog">Blog</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/disclaimer">Disclaimer</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 ImgLab Tools | <a href="/blog">Blog</a> | <a href="/about">About Us</a> | <a href="/contact">Contact Us</a> | <a href="/privacy-policy">Privacy Policy</a></p></div>
+</footer>
+
+<script src="/js/calc.js"></script>
+</body>
+</html>
+
