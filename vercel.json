@@ -1,11 +1,6 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "public/**/*",
-      "use": "@vercel/static"
-    }
-  ],
+  "outputDirectory": "public",
   "routes": [
     { "src": "/", "dest": "/index.html" },
     { "src": "/cgpa-to-percentage", "dest": "/cgpa-to-percentage-calculator.html" },
@@ -22,6 +17,7 @@
     { "src": "/blog/cgpa-to-percentage-formula-explained", "dest": "/blog/cgpa-to-percentage-formula-explained/index.html" },
     { "src": "/blog/how-to-improve-cgpa", "dest": "/blog/how-to-improve-cgpa/index.html" },
     { "src": "/blog/difference-between-sgpa-and-cgpa", "dest": "/blog/difference-between-sgpa-and-cgpa/index.html" },
-    { "src": "/(.*)", "dest": "/public/$1" }
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/404.html", "status": 404 }
   ]
 }
