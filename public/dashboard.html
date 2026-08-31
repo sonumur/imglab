@@ -1,12 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-IN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard – ImgLab Tools</title>
+  <title>Dashboard � ImgLab Tools</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/dashboard.css">
-  <script src="https://quge5.com/88/tag.min.js" data-zone="249057" async data-cfasync="false"></script>
 </head>
 <body>
   <header class="navbar">
@@ -16,7 +15,7 @@
       </a>
       <nav>
         <a href="/blog">Blog</a>
-        <a href="/">← Back to Calculator</a>
+        <a href="/">? Back to Calculator</a>
       </nav>
     </div>
   </header>
@@ -40,10 +39,10 @@
 
     <!-- Tabs Navigation -->
     <div class="tabs">
-      <button class="tab-btn active" data-tab="recent">📌 Recent</button>
-      <button class="tab-btn" data-tab="saved">⭐ Saved</button>
-      <button class="tab-btn" data-tab="analytics">📈 Analytics</button>
-      <button class="tab-btn" data-tab="export">⬇️ Export</button>
+      <button class="tab-btn active" data-tab="recent">?? Recent</button>
+      <button class="tab-btn" data-tab="saved">? Saved</button>
+      <button class="tab-btn" data-tab="analytics">?? Analytics</button>
+      <button class="tab-btn" data-tab="export">?? Export</button>
     </div>
 
     <!-- Recent Calculations -->
@@ -75,15 +74,15 @@
     <section class="tab-content" id="export">
       <h2>Export Data</h2>
       <div class="export-options">
-        <button class="btn-export" id="export-csv">📥 Download CSV</button>
-        <button class="btn-export" id="export-json">📋 Download JSON</button>
-        <button class="btn-export btn-danger" id="clear-history">🗑️ Clear History</button>
+        <button class="btn-export" id="export-csv">?? Download CSV</button>
+        <button class="btn-export" id="export-json">?? Download JSON</button>
+        <button class="btn-export btn-danger" id="clear-history">??? Clear History</button>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2026 ImgLab Tools – <a href="/blog" style="color:#eee">Blog</a> | <a href="/privacy-policy" style="color:#eee">Privacy</a> | <a href="/disclaimer" style="color:#eee">Disclaimer</a></p>
+    <p>&copy; 2026 ImgLab Tools � <a href="/blog" style="color:#eee">Blog</a> | <a href="/privacy-policy" style="color:#eee">Privacy</a> | <a href="/disclaimer" style="color:#eee">Disclaimer</a></p>
   </footer>
 
   <script>
@@ -147,7 +146,7 @@
               <p><strong>Output:</strong> ${calc.output_value}</p>
               ${calc.university ? `<p><strong>University:</strong> ${calc.university}</p>` : ''}
             </div>
-            <button class="btn-small" onclick="saveSingle('${calc.id}')">💾 Save</button>
+            <button class="btn-small" onclick="saveSingle('${calc.id}')">?? Save</button>
           </div>
         `).join('');
       } catch (err) {
@@ -185,7 +184,7 @@
               <p><strong>Input:</strong> ${item.input_value}</p>
               <p><strong>Output:</strong> ${item.output_value}</p>
             </div>
-            <button class="btn-small btn-danger" onclick="deleteSaved('${item.id}')">🗑️ Delete</button>
+            <button class="btn-small btn-danger" onclick="deleteSaved('${item.id}')">??? Delete</button>
           </div>
         `).join('');
       } catch (err) {
@@ -230,9 +229,9 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ calculation_id: calcId, name })
         });
-        alert('✅ Saved successfully!');
+        alert('? Saved successfully!');
       } catch (err) {
-        alert('❌ Error saving: ' + err.message);
+        alert('? Error saving: ' + err.message);
       }
     }
 
@@ -242,10 +241,10 @@
 
       try {
         await fetch(`/api/saved/${savedId}`, { method: 'DELETE' });
-        alert('✅ Deleted!');
+        alert('? Deleted!');
         loadSaved();
       } catch (err) {
-        alert('❌ Error deleting: ' + err.message);
+        alert('? Error deleting: ' + err.message);
       }
     }
 
@@ -263,11 +262,11 @@
       
       fetch('/api/cleanup', { method: 'DELETE' })
         .then(() => {
-          alert('✅ History cleared!');
+          alert('? History cleared!');
           loadDashboard();
           loadRecent();
         })
-        .catch(err => alert('❌ Error: ' + err.message));
+        .catch(err => alert('? Error: ' + err.message));
     });
 
     // Initial Load
