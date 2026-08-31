@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/cgpa-to-percentage", "dest": "/cgpa-to-percentage-calculator.html" },
+    { "src": "/percentage-to-cgpa", "dest": "/percentage-to-cgpa/index.html" },
+    { "src": "/sgpa-to-cgpa", "dest": "/sgpa-to-cgpa/index.html" },
+    { "src": "/grade-calculator", "dest": "/grade-calculator/index.html" },
+    { "src": "/cgpa-percentage-table", "dest": "/cgpa-percentage-table/index.html" },
+    { "src": "/dashboard", "dest": "/dashboard.html" },
+    { "src": "/about", "dest": "/about/index.html" },
+    { "src": "/contact", "dest": "/contact/index.html" },
+    { "src": "/privacy-policy", "dest": "/privacy-policy/index.html" },
+    { "src": "/disclaimer", "dest": "/disclaimer/index.html" },
+    { "src": "/blog", "dest": "/blog/index.html" },
+    { "src": "/blog/cgpa-to-percentage-formula-explained", "dest": "/blog/cgpa-to-percentage-formula-explained/index.html" },
+    { "src": "/blog/how-to-improve-cgpa", "dest": "/blog/how-to-improve-cgpa/index.html" },
+    { "src": "/blog/difference-between-sgpa-and-cgpa", "dest": "/blog/difference-between-sgpa-and-cgpa/index.html" },
+    { "src": "/(.*)", "dest": "/public/$1" }
+  ]
+}
